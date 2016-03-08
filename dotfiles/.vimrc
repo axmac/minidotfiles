@@ -1,0 +1,111 @@
+" Colors
+syntax enable           " enable syntax processing
+set background=dark
+
+" Misc
+set ttyfast             " faster redraw
+set backspace=indent,eol,start
+set clipboard=unnamed   " enable copying to system clipboard
+
+" Time out on key codes but not mappings.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" Backup and swap files
+set nobackup
+set noswapfile
+
+" Spaces & Tabs
+set tabstop=4           " 4 space tab
+set expandtab           " use spaces for tabs
+set softtabstop=4       " 4 space tab
+set shiftwidth=4
+set modelines=1
+set autoindent
+set nowrap
+
+" UI Layout
+set number              " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+set wildmenu
+set showmatch           " higlight matching parenthesis
+set scrolloff=3         " always show at least 5 lines above/below the cursor
+set sidescrolloff=3     " always show at least 5 characters left/right of the cursor
+set colorcolumn=80
+
+" Status line
+set laststatus=2
+set statusline=
+set statusline=%F                                   " filename
+set statusline+=%=                                  " left/right separator
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}    " file encoding
+set statusline+=\ %{&ff}                            " file format
+set statusline+=\ %{strlen(&ft)?&ft:'none'}]        " filetype
+set statusline+=\ %c                                " cursor column
+set statusline+=\ %l/%L                             " cursor line/total lines
+set statusline+=\ %P                                " percent through file
+
+" Searching
+set ignorecase          " ignore case when searching
+set incsearch           " search as characters are entered
+set hlsearch            " highlight all matches
+set nowrapscan          " do not wrap around
+
+" Folding
+set nofoldenable        " don't fold files by default on open
+set foldmethod=indent   " fold based on indent level
+set foldlevelstart=1    " start with fold level of 1
+set foldnestmax=10      " max 10 depth
+
+" Line Shortcuts
+nnoremap j gj
+nnoremap k gk
+
+" AutoGroups
+augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear SignColumn
+    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb :call <SID>StripTrailingWhitespaces()
+    autocmd filetype crontab setlocal nobackup nowritebackup
+    autocmd FileType ruby setlocal tabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal commentstring=#\ %s
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd BufNewFile,BufRead *.md set spell spelllang=en_gb
+    autocmd BufNewFile,BufRead Vagrantfile,Gemfile* set filetype=ruby
+augroup END
+
+" Plugins
+
+" Functions
+" strips trailing whitespace at the end of files. this
+" is called on buffer write in the autogroup above.
+function! <SID>StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Map key to toggle opt
+function MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+  exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command -nargs=+ MapToggle call MapToggle(<f-args>)
+
+" bindings
+set pastetoggle=<F1>                                " turn off autoindent when pasting
+MapToggle <F2> wrap
+MapToggle <F3> number
+MapToggle <F4> hlsearch

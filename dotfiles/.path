@@ -1,0 +1,26 @@
+# custom scripts
+if [[ -d "~/.scripts" ]]; then
+    PATH="$PATH:~/.scripts"
+fi
+
+# graviton
+if [[ -d "/opt/graviton/graviton-cli-current/bin" ]]; then
+    PATH="$PATH:/opt/graviton/graviton-cli-current/bin"
+fi
+
+# rgrav
+if [[ -d "~/Projects/rgrav" ]]; then
+    PATH="$PATH:~/Projects/rgrav"
+fi
+
+# ruby
+if [[ -d "$HOME/.rbenv/bin" ]]; then
+    PATH="$HOME/.rbenv/bin:$PATH"
+fi
+
+# oracle sqlplus
+if [[ -d "/Library/Oracle/instantclient" ]]; then
+    PATH="/Library/Oracle/instantclient:$PATH"
+fi
+
+export PATH
