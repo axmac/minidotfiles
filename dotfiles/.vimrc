@@ -1,6 +1,8 @@
 " Colors
 syntax enable           " enable syntax processing
+let g:solarized_termcolors=256
 set background=dark
+"colorscheme solarized
 
 " Misc
 set ttyfast             " faster redraw
