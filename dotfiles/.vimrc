@@ -1,13 +1,14 @@
 " Colors
-syntax enable           " enable syntax processing
-let g:solarized_termcolors=256
+syntax on           " enable syntax processing
 set background=dark
+"let g:solarized_termcolors=256
 "colorscheme solarized
 
 " Misc
 set ttyfast             " faster redraw
 set backspace=indent,eol,start
 set clipboard=unnamed   " enable copying to system clipboard
+set shortmess+=I                " remove startup message when no file is selected
 
 " Time out on key codes but not mappings.
 set notimeout
