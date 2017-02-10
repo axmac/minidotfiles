@@ -2,15 +2,9 @@
 [[ -d "$HOME/.scripts" ]] && PATH="$PATH:$HOME/.scripts"
 
 # rgrav
-[[ -d "$HOME/Projects/rgrav" ]] && PATH="$PATH:$HOME/Projects/rgrav"
+[[ -d "$HOME/projects/rgrav" ]] && PATH="$PATH:$HOME/projects/rgrav"
 
 # ruby
 [[ -d "$HOME/.rbenv/bin" ]] && PATH="$HOME/.rbenv/bin:$PATH"
-
-# oracle sqlplus
-[[ -d "/Library/Oracle/instantclient" ]] && PATH="/Library/Oracle/instantclient:$PATH"
-
-# graviton
-[[ -d "/opt/graviton/graviton-cli-current/bin" ]] && PATH="$PATH:/opt/graviton/graviton-cli-current/bin"
 
 export PATH

@@ -1,113 +1,77 @@
-" Colors
-syntax on           " enable syntax processing
-set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Misc
-set ttyfast             " faster redraw
-set backspace=indent,eol,start
-set clipboard=unnamed   " enable copying to system clipboard
-set shortmess+=I                " remove startup message when no file is selected
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" Time out on key codes but not mappings.
-set notimeout
-set ttimeout
-set ttimeoutlen=10
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" Backup and swap files
-set nobackup
-set noswapfile
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'lifepillar/vim-solarized8'
+Plugin 'axmac/vim-switch-colorschemes'
+Plugin 'axmac/vim-morning'
 
-" Spaces & Tabs
-set tabstop=4           " 4 space tab
-set expandtab           " use spaces for tabs
-set softtabstop=4       " 4 space tab
-set shiftwidth=4
-set modelines=1
-set autoindent
-set nowrap
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+"filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
-" UI Layout
-set number              " show line numbers
-set showcmd             " show command in bottom bar
-set cursorline          " highlight current line
-set wildmenu
-set showmatch           " higlight matching parenthesis
-set scrolloff=3         " always show at least 5 lines above/below the cursor
-set sidescrolloff=3     " always show at least 5 characters left/right of the cursor
-set colorcolumn=80
+" Temporary record of removed bundles
+"Plugin 'altercation/vim-colors-solarized'
 
-" Status line
+let g:vim_markdown_folding_disabled = 1
+let g:airline#extensions#tabline#enabled = 1
+
 set laststatus=2
-set statusline=
-set statusline=%F                                   " filename
-set statusline+=%=                                  " left/right separator
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}    " file encoding
-set statusline+=\ %{&ff}                            " file format
-set statusline+=\ %{strlen(&ft)?&ft:'none'}]        " filetype
-set statusline+=\ %c                                " cursor column
-set statusline+=\ %l/%L                             " cursor line/total lines
-set statusline+=\ %P                                " percent through file
 
-" Searching
-set ignorecase          " ignore case when searching
-set incsearch           " search as characters are entered
-set hlsearch            " highlight all matches
-set nowrapscan          " do not wrap around
+" Use F8 to switch between the color schemes in the SetColors list
+let g:mycolors=['solarized8_dark_low', 'axmac-morning']
 
-" Folding
-set nofoldenable        " don't fold files by default on open
-set foldmethod=indent   " fold based on indent level
-set foldlevelstart=1    " start with fold level of 1
-set foldnestmax=10      " max 10 depth
+"Color theme
+syntax enable
+set background=light
+colorscheme solarized8_dark_low
+se t_Co=16
 
-" Line Shortcuts
-nnoremap j gj
-nnoremap k gk
+"Shortcuts
+"Override default file explorer with NERDTree
+:command E NERDTree
+:cabbrev at AirlineTheme
+:cabbrev cs colorscheme
 
-" AutoGroups
-augroup configgroup
-    autocmd!
-    autocmd VimEnter * highlight clear SignColumn
-    autocmd filetype crontab setlocal nobackup nowritebackup
-    autocmd FileType ruby setlocal tabstop=2
-    autocmd FileType ruby setlocal shiftwidth=2
-    autocmd FileType ruby setlocal softtabstop=2
-    autocmd FileType ruby setlocal commentstring=#\ %s
-    autocmd FileType python setlocal commentstring=#\ %s
-    autocmd BufEnter *.sh setlocal tabstop=2
-    autocmd BufEnter *.sh setlocal shiftwidth=2
-    autocmd BufEnter *.sh setlocal softtabstop=2
-    autocmd BufNewFile,BufRead *.md set spell spelllang=en_gb
-    autocmd BufNewFile,BufRead Vagrantfile,Gemfile* set filetype=ruby
-augroup END
+"Tab behaviour
+"From
+"http://vi.stackexchange.com/questions/4541/vundle-filetype-plugin-indent-on-messes-with-tabwidth
+set expandtab   " Make sure that every file uses spaces, not tab
+set shiftround  " Round indent to multiple of 'shiftwidth'
+set autoindent  " Copy indent from current line, over to the new line
 
-" Plugins
+" Set the tab width
+let s:tabwidth=2
+au Filetype * let &l:tabstop = s:tabwidth
+au Filetype * let &l:shiftwidth = s:tabwidth
+au Filetype * let &l:softtabstop = s:tabwidth
 
-" Functions
-" strips trailing whitespace at the end of files. this
-" is called on buffer write in the autogroup above.
-function! <SID>StripTrailingWhitespaces()
-    " save last search & cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunction
+" Strip traling whitespace from nominated file types
+autocmd FileType yaml,rb,cfg autocmd BufWritePre <buffer> %s/\s\+$//e
 
-" Map key to toggle opt
-function MapToggle(key, opt)
-  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
-  exec 'nnoremap '.a:key.' '.cmd
-  exec 'inoremap '.a:key." \<C-O>".cmd
-endfunction
-command -nargs=+ MapToggle call MapToggle(<f-args>)
-
-" bindings
-set pastetoggle=<F1>                                " turn off autoindent when pasting
-MapToggle <F2> wrap
-MapToggle <F3> number
-MapToggle <F4> hlsearch
+" Ensure search highlighing is turned on
+" Show current highlight settings with :highlight
+set hlsearch

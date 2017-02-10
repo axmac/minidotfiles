@@ -18,8 +18,18 @@ stty -ixon
 
 # Add tab completion for more commands
 ## OSX
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    source $(brew --prefix)/etc/bash_completion
+#if [ -f $(brew --prefix)/etc/bash_completion ]; then
+#    source $(brew --prefix)/etc/bash_completion
+#fi
+
+# SSH completion
+if [[ -f ~/.ssh_completion ]]; then
+    source ~/.ssh_completion
+fi
+
+# Rgrav completion
+if [[ -f ~/.rgrav_completion ]]; then
+    source ~/.rgrav_completion
 fi
 
 # Centos/jump host
@@ -31,6 +41,38 @@ if [[ -f /opt/graviton/graviton-cli-current/bin/graviton-completion.bash ]]; the
     source /opt/graviton/graviton-cli-current/bin/graviton-completion.bash
 fi
 
-if [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]]; then
-    source /usr/share/git-core/contrib/completion/git-prompt.sh
+if [[ -f /usr/share/bash-completion/completions/git ]]; then
+    source /usr/share/bash-completion/completions/git
+fi
+
+# Git prompt
+export GIT_PROMPT_ONLY_IN_REPO=1
+export GIT_PROMPT_FETCH_REMOTE_STATUS=0
+if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
+    source ~/.bash-git-prompt/gitprompt.sh
+fi
+
+# SSH agent
+SSH_ENV="$HOME/.ssh/environment"
+
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+    /usr/bin/ssh-add ~/.ssh/puppet
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
 fi

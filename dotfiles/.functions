@@ -1,36 +1,21 @@
-# Toggle show/hide files
-function toggleshowhide() {
-    # check if hidden files are visible and store result in a variable
-    isVisible=`defaults read com.apple.finder AppleShowAllFiles`
-
-    # toggle visibility based on variables value
-    if [ "$isVisible" == "0" ]
-    then
-    	defaults write com.apple.finder AppleShowAllFiles -bool true
-    else
-    	defaults write com.apple.finder AppleShowAllFiles -bool false
-    fi
-
-    # force changes by restarting Finder
-    killall Finder
-}
-
-# Cleanup
-function dsclean() {
-    read -p "Delete all .DS_Stores in this directory and all subdirectories? (y/n) " -n 1
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        find . -type f -name '.DS_Store' -ls -delete
-    fi
-}
-
 # Decode base64
 function decode() {
     echo "$1" | base64 --decode ; echo
 }
 
-function colours() {
-    for i in {0..255} ; do
-        printf "\x1b[38;5;${i}mcolour${i}\n"
-    done
+# rgrav wrapper to be able to use a branch version
+function rgrav() {
+    command="$@";
+    I_REALLY_WANT_TO_USE_AN_UNSTABLE_VERSION_OF_RGRAV=yes ~/projects/rgrav/rgrav "$command";
+}
+
+# Add a route to the bastion (for now has to be done in windows, pending future winbash update)
+function bastionroute() {
+    ip="$(netsh interface ip show address "SonicWall" | grep "IP" | cut -d " " -f33-)";
+    route add 52.40.189.68 $ip
+}
+
+# Add the VPN nameserver to the start of resolv.conf after the VPN is established so that name resolution works
+function vpndns() {
+    sudo sed -i '1s/^/nameserver 172.20.1.6\n/' /etc/resolv.conf
 }

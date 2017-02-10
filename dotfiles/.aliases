@@ -6,6 +6,9 @@ alias e="exit"
 alias h="history"
 alias j="jobs"
 
+alias less='less -r'                          # raw control characters
+alias whence='type -a'                        # where, of a sort
+
 # vim
 alias v="vim"
 alias vi="vim"
@@ -14,18 +17,25 @@ alias view="vim -R"
 # git
 alias g="git"
 alias gl='git log --pretty=format:'\''%Cred%h %Cgreen%ad%Creset%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset'\'' --abbrev-commit --date=short'
+alias gL='git log'
+alias gg='git log --graph'
+alias ga='git add'
 alias gs='git status'
 alias gss='git status --short'
 alias gd='git diff'
 alias gp='git pull'
 alias gf='git fetch'
+alias gA='git add -A'
+alias gm='git commit'
+alias gr='git rebase'
+alias fixup='git add -A && git commit --amend'
 
 # ls
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
 else # OS X `ls`
-	colorflag="-G"
+    colorflag="-G"
 fi
 
 alias l="ls -lhF ${colorflag}"
@@ -33,7 +43,7 @@ alias ls="ls -h ${colorflag}"
 alias ll="ls -lAhF ${colorflag}"
 
 # tmux
-alias t="tmux"
+alias t='tmux'
 alias tls='tmux ls'
 
 # lsof
@@ -51,3 +61,9 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+
 
 # DNS
 alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# Quick cd to Stash under Windows
+alias cdwin="cd $WINDOWS_HOME/Documents/Stash"
+
+# TERM sent to ssh
+alias ssh='TERM=xterm ssh'
