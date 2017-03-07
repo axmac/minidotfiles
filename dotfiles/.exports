@@ -23,3 +23,6 @@ export WINDOWS_HOME=/mnt/c/Users/alex
 # Bash TERM
 # Note .aliases alias for SSH to pass TERM as xterm to SSH connections.
 export TERM='xterm'
+
+# Exclude from bash autocomplete. Separate entries with a colon.
+export FIGNORE=".retry"
