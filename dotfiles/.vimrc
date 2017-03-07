@@ -53,6 +53,7 @@ se t_Co=16
 "Shortcuts
 "Override default file explorer with NERDTree
 :command E NERDTree
+:command EF NERDTreeFind
 :cabbrev at AirlineTheme
 :cabbrev cs colorscheme
 
@@ -70,7 +71,7 @@ au Filetype * let &l:shiftwidth = s:tabwidth
 au Filetype * let &l:softtabstop = s:tabwidth
 
 " Strip traling whitespace from nominated file types
-autocmd FileType yaml,rb,cfg autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType yaml,rb,cfg,md autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " Ensure search highlighing is turned on
 " Show current highlight settings with :highlight
