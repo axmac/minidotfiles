@@ -18,4 +18,5 @@ function bastionroute() {
 # Add the VPN nameserver to the start of resolv.conf after the VPN is established so that name resolution works
 function vpndns() {
     sudo sed -i '1s/^/nameserver 172.20.1.6\n/' /etc/resolv.conf
+    sudo sed -i -e '$ a search orion.internal' /etc/resolv.conf
 }
