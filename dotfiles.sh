@@ -3,7 +3,7 @@
 # Start
 echo "`basename $0` starting."
 
-directory=~/projects/minidotfiles/dotfiles
+directory=~/.minidotfiles/dotfiles
 backup=~/.dotfiles_backup
 files=`find $directory -iname ".*" -maxdepth 1 -type f`
 
