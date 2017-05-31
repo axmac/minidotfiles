@@ -67,3 +67,6 @@ alias cdwin="cd $WINDOWS_HOME/Documents/Stash"
 
 # TERM sent to ssh
 alias ssh='TERM=xterm ssh'
+
+# grep
+alias grep='grep --color=auto -I --exclude-dir=.git --exclude-dir=.svn --exclude-dir=.metadata --exclude=.DS_Store'
