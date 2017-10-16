@@ -23,3 +23,31 @@ export TERM='xterm'
 
 # Exclude from bash autocomplete. Separate entries with a colon.
 export FIGNORE=".retry"
+
+# Prompt colors.
+# red:          $(tput setaf 1)
+# green:        $(tput setaf 2)
+# yellow:       $(tput setaf 3)
+# blue:         $(tput setaf 4)
+# magenta:      $(tput setaf 5)
+# cyan:         $(tput setaf 6)
+# white:        $(tput setaf 7)
+# bold:         $(tput bold)
+# underline:    $(tput sgr 0 1)
+# reset:        $(tput sgr0)
+
+# If SSH_CONNECTION is present, then the term is remote.
+if [[ -v SSH_CONNECTION ]]; then
+  PROMPT_BGCOLOR="\e[07m"
+  PROMPT_USER_COLOR="$(tput setaf 5)"
+  PROMPT_HOST_COLOR="$(tput setaf 3)"
+else
+  PROMPT_BGCOLOR="\e[07m"
+  PROMPT_USER_COLOR="$(tput setaf 6)"
+  PROMPT_HOST_COLOR="$(tput setaf 4)"
+fi
+
+PROMPT_BGEND="\e[0m"
+
+export BASH_PROMPT="\n$PROMPT_BGCOLOR\[$(tput bold)$PROMPT_USER_COLOR\]\u\[$(tput setaf 7)\]@\[$PROMPT_HOST_COLOR\]\h\[$(tput setaf 7)\]: \w$PROMPT_BGEND\[$(tput sgr0)\]"
+

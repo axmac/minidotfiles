@@ -1,6 +1,6 @@
 # Load the shell dotfiles:
 # * ~/.path can be used to extend `$PATH`.
-for file in ~/.{path,bash_prompt,exports,functions,aliases,extra}; do
+for file in ~/.{path,exports,functions,aliases,extra,bash_prompt}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -15,12 +15,6 @@ shopt -s histappend
 
 # Allow ctrl+s to search forward through history
 stty -ixon
-
-# Add tab completion for more commands
-## OSX
-#if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#    source $(brew --prefix)/etc/bash_completion
-#fi
 
 # SSH completion
 if [[ -f ~/.ssh_completion ]]; then
@@ -48,7 +42,7 @@ fi
 # Git prompt
 export GIT_PROMPT_ONLY_IN_REPO=1
 export GIT_PROMPT_FETCH_REMOTE_STATUS=0
-export GIT_PROMPT_START="${ResetColor}${BoldCyan}\u${ResetColor}@${BoldCyan}\h${ResetColor} ${BoldGreen}\w${ResetColor}"
+export GIT_PROMPT_START="$BASH_PROMPT"
 if [[ -f ~/.bash-git-prompt/gitprompt.sh ]]; then
     source ~/.bash-git-prompt/gitprompt.sh
 fi
