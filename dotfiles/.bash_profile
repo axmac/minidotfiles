@@ -1,6 +1,6 @@
 # Load the shell dotfiles:
 # * ~/.path can be used to extend `$PATH`.
-for file in ~/.{path,exports,functions,aliases,extra,bash_prompt}; do
+for file in ~/.{bash_completion,path,exports,functions,aliases,extra,bash_prompt}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -15,29 +15,6 @@ shopt -s histappend
 
 # Allow ctrl+s to search forward through history
 stty -ixon
-
-# SSH completion
-if [[ -f ~/.ssh_completion ]]; then
-    source ~/.ssh_completion
-fi
-
-# Rgrav completion
-if [[ -f ~/.rgrav_completion ]]; then
-    source ~/.rgrav_completion
-fi
-
-# Centos/jump host
-if [[ -f /etc/bash_completion.d/git ]]; then
-    source /etc/bash_completion.d/git
-fi
-
-if [[ -f /opt/graviton/graviton-cli-current/bin/graviton-completion.bash ]]; then
-    source /opt/graviton/graviton-cli-current/bin/graviton-completion.bash
-fi
-
-if [[ -f /usr/share/bash-completion/completions/git ]]; then
-    source /usr/share/bash-completion/completions/git
-fi
 
 # Git prompt
 export GIT_PROMPT_ONLY_IN_REPO=1

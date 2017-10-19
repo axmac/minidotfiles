@@ -5,7 +5,8 @@ echo "`basename $0` starting."
 
 directory=~/.minidotfiles/dotfiles
 backup=~/.dotfiles_backup
-files=`find $directory -iname ".*" -maxdepth 1 -type f`
+files=`find $directory -maxdepth 1 -type f -iname ".*"` 
+directories=`find $directory -maxdepth 1 -type d -iname ".*"`
 
 function doIt() {
     # make the backup directory
@@ -20,6 +21,14 @@ function doIt() {
         echo "Symlinking $file to ~/$(basename $file)"
         ln -f -s $file ~/$(basename $file)
     done
+
+    # symlinks for directories
+    for dir in ${directories[@]}; do
+        echo "Symlinking $dir to ~/$(basename $dir)"
+        rm ~/$(basename $dir)
+        ln -f -s $dir/ ~/$(basename $dir)
+    done
+
 }
 
 read -p "This script will backup your current dotfiles and symlink to a new set of dotfiles. Are you sure? (y/n) " -n 1

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Bash completion files
+files=`find ~/.bash_completion.d/ -maxdepth 1 -type f` 
+for file in ${files[@]}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+
