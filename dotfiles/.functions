@@ -8,15 +8,3 @@ function rgrav() {
     command="$@";
     I_REALLY_WANT_TO_USE_AN_UNSTABLE_VERSION_OF_RGRAV=yes ~/projects/rgrav/rgrav "$command";
 }
-
-# Add a route to the bastion (for now has to be done in windows, pending future winbash update)
-function bastionroute() {
-    ip="$(netsh interface ip show address "SonicWall" | grep "IP" | cut -d " " -f33-)";
-    route add 52.40.189.68 $ip
-}
-
-# Add the VPN nameserver to the start of resolv.conf after the VPN is established so that name resolution works
-function vpndns() {
-    sudo sed -i '1s/^/nameserver 172.20.1.6\n/' /etc/resolv.conf
-    sudo sed -i -e '$ a search orion.internal' /etc/resolv.conf
-}

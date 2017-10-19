@@ -58,8 +58,7 @@ se t_Co=16
 :cabbrev cs colorscheme
 
 "Tab behaviour
-"From
-"http://vi.stackexchange.com/questions/4541/vundle-filetype-plugin-indent-on-messes-with-tabwidth
+"From http://vi.stackexchange.com/questions/4541/vundle-filetype-plugin-indent-on-messes-with-tabwidth
 set expandtab   " Make sure that every file uses spaces, not tab
 set shiftround  " Round indent to multiple of 'shiftwidth'
 set autoindent  " Copy indent from current line, over to the new line
