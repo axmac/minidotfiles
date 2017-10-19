@@ -14,9 +14,6 @@ export LC_ALL="en_NZ.UTF-8"
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
-# Windows home folder
-export WINDOWS_HOME=/mnt/c/Users/alex
-
 # Bash TERM
 # Note .aliases alias for SSH to pass TERM as xterm to SSH connections.
 export TERM='xterm'

@@ -1,16 +1,19 @@
-# mini dotfiles
+# About
 
-This is a mini version of [these](https://github.com/craighurley/dotfiles) dotfiles, and _should_ work on both OSX and Linux.
+This is a set of dotfiles based on [these](https://github.com/craighurley/dotfiles) dotfiles. They are tweaked and extended for use with the Windows Bash Subsystem (Ubuntu), and _should_ work ok for Linux shells more generally.
 
-1. Clone this repo.
+# Setup
 
-    ```
-    git clone ssh://git@stash:7999/~craigh/minidotfiles.git ~/Projects/minidotfiles
-    ```
+Clone this repo, then `cd` into your local `minidotfiles` repo and run
 
-1. Run the setup script.  Any existing dotfiles you have in `~/` will be backed up to `~/.dotfiles_backup`.
+    ~/.dotfiles.sh
 
-    ```
-    cd ~/Projects/minidotfiles
-    ./dotfiles.sh
-    ```
+Any existing dotfiles you have in `~/` will be backed up to `~/.dotfiles_backup`.
+
+## bash-git-prompt
+
+The dotfiles assume the use of [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt.git).
+
+# Acknowledgements
+
+- [Craig Hurley](https://github.com/craighurley/dotfiles)
