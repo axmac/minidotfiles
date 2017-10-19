@@ -6,7 +6,7 @@ This is a set of dotfiles based on [these](https://github.com/craighurley/dotfil
 
 Clone this repo, then `cd` into your local `minidotfiles` repo and run
 
-    ~/.dotfiles.sh
+    ./dotfiles.sh
 
 Any existing dotfiles you have in `~/` will be backed up to `~/.dotfiles_backup`.
 
@@ -14,6 +14,8 @@ Any existing dotfiles you have in `~/` will be backed up to `~/.dotfiles_backup`
 
 The dotfiles assume the use of [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt.git).
 
+    git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
+
 # Acknowledgements
 
-- [Craig Hurley](https://github.com/craighurley/dotfiles)
+- [Craig Hurley](https://github.com/craighurley)
