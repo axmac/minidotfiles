@@ -16,6 +16,14 @@ The dotfiles assume the use of [bash-git-prompt](https://github.com/magicmonty/b
 
     git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
 
+## Vundle for Vim plugin management
+
+The .vimrc assumes use of Vundle.
+
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+Run vim and :PluginInstall. (Ignore the 'cannot find color scheme error' on vim startup)
+
 # Acknowledgements
 
 - [Craig Hurley](https://github.com/craighurley)
