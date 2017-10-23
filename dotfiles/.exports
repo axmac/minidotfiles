@@ -21,6 +21,11 @@ export TERM='xterm'
 # Exclude from bash autocomplete. Separate entries with a colon.
 export FIGNORE=".retry"
 
+# Connect Docker client on WSL to server on Windows.
+# Ensure daemon is exposed in the Docker settings on Windows.
+# https://blog.jayway.com/2017/04/19/running-docker-on-bash-on-windows/
+export DOCKER_HOST='tcp://0.0.0.0:2375'
+
 # Prompt colors.
 # red:          $(tput setaf 1)
 # green:        $(tput setaf 2)
