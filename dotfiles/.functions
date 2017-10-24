@@ -8,3 +8,8 @@ function rgrav() {
     command="$@";
     I_REALLY_WANT_TO_USE_AN_UNSTABLE_VERSION_OF_RGRAV=yes ~/projects/rgrav/rgrav "$command";
 }
+
+# docker stop & rm
+function docker-clean() {
+    docker stop $(docker ps -a -q -f name=$1) && docker rm $(docker ps -a -q -f name=$1)
+}
