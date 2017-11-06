@@ -28,7 +28,7 @@ alias gf='git fetch'
 alias gA='git add -A'
 alias gm='git commit'
 alias gr='git rebase'
-alias fixup='git add -A && git commit --amend'
+alias fixup='git add -A && git commit --amend -m ""'
 
 # ls
 # Detect which `ls` flavor is in use
