@@ -1,6 +1,6 @@
 # Load the shell dotfiles:
 # * ~/.path can be used to extend `$PATH`.
-for file in ~/.{bash_completion,path,exports,functions,aliases,extra,bash_prompt}; do
+for file in ~/.{bash_completion,path,exports,functions,aliases,extra,bash_prompt,fzf.bash}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
