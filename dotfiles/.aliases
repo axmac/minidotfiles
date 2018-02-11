@@ -69,7 +69,7 @@ alias cdwin="cd $WINDOWS_HOME/Documents/Stash"
 alias ssh='TERM=xterm ssh'
 
 # grep
-alias grep='grep --color=auto -I --exclude-dir=.git --exclude-dir=.svn --exclude-dir=.metadata --exclude=.DS_Store'
+alias grep='grep --color=auto -I --exclude-dir=.git --exclude-dir=.svn --exclude-dir=.metadata --exclude=.tmp'
 
 # docker
 alias dp='docker ps -a'

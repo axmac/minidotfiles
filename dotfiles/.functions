@@ -13,3 +13,10 @@ function rgrav() {
 function docker-clean() {
     docker stop $(docker ps -a -q -f name=$1) && docker rm $(docker ps -a -q -f name=$1)
 }
+
+# VPN ip (assumes vpn is eth2)
+# Use with `route add <ip> $(vpnip)`
+function vpnip() {
+  ip="$(ifconfig eth2 |grep "inet addr" | cut -d " " -f 12,1 | cut -d ":" -f 2)"
+  echo $ip
+}

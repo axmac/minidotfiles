@@ -56,8 +56,8 @@ se t_Co=16
 
 "Override default highlights
 highlight Search cterm=reverse ctermfg=12 ctermbg=8 gui=reverse guifg=#839496 guibg=#002b36
-highlight Directory ctermfg=3 guifg=#b58900
-highlight Identifier term=standout cterm=bold ctermfg=6 gui=bold guifg=#2aa198
+"highlight Directory ctermfg=3 guifg=#b58900
+"highlight Identifier term=standout cterm=bold ctermfg=6 gui=bold guifg=#2aa198
 
 "Shortcuts
 "Override default file explorer with NERDTree
@@ -66,7 +66,7 @@ highlight Identifier term=standout cterm=bold ctermfg=6 gui=bold guifg=#2aa198
 :cabbrev at AirlineTheme
 :cabbrev cs colorscheme
 "Alias fzf commands
-:command Ls Buffers
+:command LS Buffers
 
 "Tab behaviour
 "From http://vi.stackexchange.com/questions/4541/vundle-filetype-plugin-indent-on-messes-with-tabwidth
@@ -102,6 +102,11 @@ set hlsearch
 "Line numbers
 set number
 
+"Expand tabs
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 "Livedown command reference:
 " launch the Livedown server and preview your markdown file
 "   :LivedownPreview
@@ -112,3 +117,11 @@ set number
 " launch/kill the Livedown server
 "   :LivedownToggle
 :noremap <F11> :LivedownToggle<CR>
+
+fun CleanForMouseSelect()
+"    normal <Ctrl+w><Ctrl+o>
+    :set nonumber
+    return 0
+endfun
+
+:noremap <F12> :call CleanForMouseSelect()<CR>

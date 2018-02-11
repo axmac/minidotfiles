@@ -6,6 +6,7 @@ export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoreboth:erasedups
 export HISTIGNORE="exit:c"
+export PROMPT_COMMAND='history -a'
 
 # Use UTF-8
 export LANG="en_NZ"
