@@ -20,6 +20,8 @@ Plugin 'axmac/vim-morning'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'shime/vim-livedown'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'gagoar/StripWhiteSpaces'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,18 +82,6 @@ au Filetype * let &l:tabstop = s:tabwidth
 au Filetype * let &l:shiftwidth = s:tabwidth
 au Filetype * let &l:softtabstop = s:tabwidth
 
-" Strip trailing whitespace from nominated file types
-autocmd FileType yaml,yml,rb,cfg,md autocmd BufWritePre <buffer> %s/\s\+$//e
-
-" Alternative to stripping on save, use a function
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-
-:noremap <F5> :call TrimWhitespace()<CR>
-
 " Ensure search highlighing is turned on
 " Show current highlight settings with :highlight
 set hlsearch
@@ -118,8 +108,10 @@ set expandtab
 "   :LivedownToggle
 :noremap <F11> :LivedownToggle<CR>
 
+" Open the current buffer in a new tab without line numbers for mouse
+" select/copy. (Close the tab after copying to return to the original view.)
 fun CleanForMouseSelect()
-"    normal <Ctrl+w><Ctrl+o>
+    :tabe %
     :set nonumber
     return 0
 endfun
