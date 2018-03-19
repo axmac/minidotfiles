@@ -27,6 +27,10 @@ export FIGNORE=".retry"
 # https://blog.jayway.com/2017/04/19/running-docker-on-bash-on-windows/
 export DOCKER_HOST='tcp://0.0.0.0:2375'
 
+# For vagrant under Windows
+# https://www.vagrantup.com/docs/other/wsl.html
+export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+
 # Prompt colors.
 # red:          $(tput setaf 1)
 # green:        $(tput setaf 2)

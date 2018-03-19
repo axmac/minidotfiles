@@ -28,7 +28,11 @@ alias gf='git fetch'
 alias gA='git add --all :/'
 alias gm='git commit'
 alias gr='git rebase'
-alias fixup='git add -A && git commit --amend -m ""'
+alias fixup='git commit --amend -m ""'
+
+# bundler
+alias be='bundle exec'
+alias ber='bundle exec rake'
 
 # ls
 # Detect which `ls` flavor is in use
@@ -73,3 +77,6 @@ alias grep='grep --color=auto -I --exclude-dir=.git --exclude-dir=.svn --exclude
 
 # docker
 alias dp='docker ps -a'
+
+# ps
+alias psa='ps -a'

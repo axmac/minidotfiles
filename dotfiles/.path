@@ -1,13 +1,20 @@
 # custom scripts
-[[ -d "$HOME/.scripts" ]] && PATH="$PATH:$HOME/.scripts"
+[[ -d "$HOME/.scripts" ]] && PATH="$HOME/.scripts:$PATH"
 
 # rgrav
-[[ -d "$HOME/projects/rgrav" ]] && PATH="$PATH:$HOME/projects/rgrav"
+[[ -d "$HOME/projects/rgrav" ]] && PATH="$HOME/projects/rgrav:$PATH"
 
 # ruby
 [[ -d "$HOME/.rbenv/bin" ]] && PATH="$HOME/.rbenv/bin:$PATH"
 
 # ansible
 [[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
+
+# vagrant on windows
+[[ -d "/mnt/c/HashiCorp/Vagrant/bin" ]] && PATH="/mnt/c/HashiCorp/Vagrant/bin:$PATH"
+
+# virtualbox on windows
+
+[[ -d "/mnt/c/Program Files/Oracle/VirtualBox" ]] && PATH="/mnt/c/Program Files/Oracle/VirtualBox:$PATH"
 
 export PATH
