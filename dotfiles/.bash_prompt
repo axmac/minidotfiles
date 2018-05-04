@@ -1,2 +1,16 @@
-# BASH_PROMPT is defined in .exports
+# If SSH_CONNECTION is present, then the term is remote.
+if [[ -v SSH_CONNECTION ]]; then
+  PROMPT_BGCOLOR="\e[07m"
+  PROMPT_USER_COLOR="$(tput setaf 5)"
+  PROMPT_HOST_COLOR="$(tput setaf 3)"
+else
+  PROMPT_BGCOLOR="\e[07m"
+  PROMPT_USER_COLOR="$(tput setaf 6)"
+  PROMPT_HOST_COLOR="$(tput setaf 4)"
+fi
+
+PROMPT_BGEND="\e[0m"
+
+export BASH_PROMPT="\n$PROMPT_BGCOLOR\[$(tput bold)$PROMPT_USER_COLOR\]\u\[$(tput setaf 7)\]@\[$PROMPT_HOST_COLOR\]\h\[$(tput setaf 7)\]: \w$PROMPT_BGEND\[$(tput sgr0)\]"
+
 export PS1="$BASH_PROMPT\n\$ "
