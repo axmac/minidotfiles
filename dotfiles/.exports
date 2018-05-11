@@ -17,7 +17,9 @@ export MANPAGER="less -X"
 
 # Bash TERM
 # Note .aliases alias for SSH to pass TERM as xterm to SSH connections.
-export TERM="xterm-256color"
+if [[ ! $TMUX ]]; then
+  export TERM="xterm-256color";
+fi
 
 # Exclude from bash autocomplete. Separate entries with a colon.
 export FIGNORE=".retry"

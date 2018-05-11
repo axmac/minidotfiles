@@ -48,5 +48,7 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+
+if [ -d "$HOME/.rbenv/bin" ]; then
+    eval "$(rbenv init -)"
+fi

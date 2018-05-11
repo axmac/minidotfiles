@@ -48,18 +48,12 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
 " Use F8 to switch between the color schemes in the SetColors list
-let g:mycolors=['solarized8_dark_low', 'axmac-morning']
+"let g:mycolors=['solarized8_dark_low', 'axmac-morning']
 
 "Color theme
 syntax enable
-set background=light
 colorscheme solarized8_dark_low
-se t_Co=16
-
-"Override default highlights
-"highlight Search cterm=reverse ctermfg=12 ctermbg=8 gui=reverse guifg=#839496 guibg=#002b36
-"highlight Directory ctermfg=3 guifg=#b58900
-"highlight Identifier term=standout cterm=bold ctermfg=6 gui=bold guifg=#2aa198
+set t_Co=256
 
 "Shortcuts
 "Override default file explorer with NERDTree
