@@ -9,8 +9,8 @@ export HISTIGNORE="exit:c"
 export PROMPT_COMMAND='history -a'
 
 # Use UTF-8
-export LANG="en_NZ"
-export LC_ALL="en_NZ.UTF-8"
+#export LANG="en_NZ"
+#export LC_ALL="en_NZ.UTF-8"
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -45,4 +45,4 @@ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 # underline:    $(tput sgr 0 1)
 # reset:        $(tput sgr0)
 
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+#export JAVA_HOME=/usr/lib/jvm/java-8-oracle

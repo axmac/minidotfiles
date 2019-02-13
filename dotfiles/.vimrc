@@ -52,7 +52,8 @@ set laststatus=2
 
 "Color theme
 syntax enable
-colorscheme solarized8_dark_low
+set background=dark
+colorscheme solarized8
 set t_Co=256
 
 "Shortcuts

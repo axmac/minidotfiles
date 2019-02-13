@@ -1,3 +1,10 @@
+# Load ZSH
+if [ -e ~/.oh-my-zsh ]; then
+  if [ -t 1 ]; then
+    exec zsh
+  fi
+fi
+
 # Load the shell dotfiles:
 # * ~/.path can be used to extend `$PATH`.
 for file in ~/.{bash_completion,path,exports,functions,aliases,extra,bash_prompt,fzf.bash}; do
