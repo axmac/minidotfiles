@@ -1,4 +1,9 @@
-# Load ZSH
+##########
+#
+# If using ZSH shell, refer to .zsh_profile.
+#
+##########
+
 if [ -e ~/.oh-my-zsh ]; then
   if [ -t 1 ]; then
     exec zsh

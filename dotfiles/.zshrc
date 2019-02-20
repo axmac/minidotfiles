@@ -111,3 +111,5 @@ source $ZSH/oh-my-zsh.sh
 #
 
 source ~/.zsh_profile
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
