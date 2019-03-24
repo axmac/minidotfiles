@@ -1,6 +1,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Fix NERDTree presentation and behaviour in SSH sessions.
+" https://stackoverflow.com/questions/8753286/nerd-tree-enter-does-not-open-sub-dirs
+set encoding=utf-8
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
