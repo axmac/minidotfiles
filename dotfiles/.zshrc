@@ -1,8 +1,19 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Update the PATH with anything needed before sourcing zsh_profile
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/alex/.oh-my-zsh
+
+custom_virtualenv() {
+  local virtualenv_path="$VIRTUAL_ENV"
+
+  # Early exit; $virtualenv_path must always be set.
+  [[ -z "$virtualenv_path" ]] && return
+
+#  "$1_prompt_segment" "$0" "$2" "blue" "$DEFAULT_COLOR" "Pipenv" 'PYTHON_ICON'
+   echo Pipenv
+}
+POWERLEVEL9K_CUSTOM_VIRTUALENV="custom_virtualenv"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -14,9 +25,10 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time dir vcs ssh)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_virtualenv time dir vcs ssh)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
+POWERLEVEL9K_CUSTOM_VIRTUALENV_BACKGROUND='141'
 # /end powerlevel9k
 
 # Set list of themes to load
@@ -76,6 +88,7 @@ plugins=(
   rbenv
   ruby
   fzf-zsh
+  pipenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +123,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-source ~/.zsh_profile
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Source zsh_profile after ZSH setup is finished, so that any overridden
+# things e.g. aliases are applied last.
+source ~/.zsh_profile
