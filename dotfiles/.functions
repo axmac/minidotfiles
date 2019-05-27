@@ -20,3 +20,20 @@ function vpnip() {
   ip="$(ifconfig eth2 |grep "inet addr" | cut -d " " -f 12,1 | cut -d ":" -f 2)"
   echo $ip
 }
+
+# De/activate a virtualenv. Parameter is the name of the venv to activate.
+function venv() {
+  if [[ ! -n $VIRTUAL_ENV ]]; then
+    venv_dir="$HOME/.local/share/virtualenvs"
+    if [[ ! -f $venv_dir/$1/bin/activate ]]; then
+      echo "No virtualenv '$1' found in $venv_dir";
+      echo Found:
+      ls --color=never $venv_dir;
+      return;
+    fi
+
+    source $venv_dir/$1/bin/activate;
+  else
+    deactivate;
+  fi
+}

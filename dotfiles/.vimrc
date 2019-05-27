@@ -62,12 +62,12 @@ set t_Co=256
 
 "Shortcuts
 "Override default file explorer with NERDTree
-:command E NERDTree
-:command EF NERDTreeFind
-:cabbrev at AirlineTheme
-:cabbrev cs colorscheme
+command E NERDTree
+command EF NERDTreeFind
+cabbrev at AirlineTheme
+cabbrev cs colorscheme
 "Alias fzf commands
-:command LS Buffers
+command LS Buffers
 
 "Tab behaviour
 "From http://vi.stackexchange.com/questions/4541/vundle-filetype-plugin-indent-on-messes-with-tabwidth
@@ -105,7 +105,7 @@ set expandtab
 "
 " launch/kill the Livedown server
 "   :LivedownToggle
-:noremap <F11> :LivedownToggle<CR>
+noremap <F11> :LivedownToggle<CR>
 
 " Open the current buffer in a new tab without line numbers for mouse
 " select/copy. (Close the tab after copying to return to the original view.)
@@ -115,4 +115,7 @@ fun CleanForMouseSelect()
     return 0
 endfun
 
-:noremap <F12> :call CleanForMouseSelect()<CR>
+noremap <F12> :call CleanForMouseSelect()<CR>
+
+nnoremap o o<Esc>
+nnoremap O O<Esc>
