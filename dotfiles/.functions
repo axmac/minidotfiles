@@ -21,19 +21,24 @@ function vpnip() {
   echo $ip
 }
 
-# De/activate a virtualenv. Parameter is the name of the venv to activate.
-function venv() {
-  if [[ ! -n $VIRTUAL_ENV ]]; then
-    venv_dir="$HOME/.local/share/virtualenvs"
-    if [[ ! -f $venv_dir/$1/bin/activate ]]; then
-      echo "No virtualenv '$1' found in $venv_dir";
-      echo Found:
-      ls --color=never $venv_dir;
-      return;
-    fi
+# burnttoast. Usage 'toast This is my message'
+# WSL only. TODO add a check for powershell.
+function toast() {
+  msg="$@";
 
-    source $venv_dir/$1/bin/activate;
-  else
-    deactivate;
+  powershell.exe -command New-BurntToastNotification -AppLogo c:\\ubuntu-logo32.png -Text \"WSL\", \"$msg\"
+}
+
+function pingme() {
+  exit_code=$?
+
+  img=c:\\snoopy-happy.png
+  msg='Finished.'
+
+  if [[ $exit_code -eq 1 ]]; then
+    img=c:\\coyote-fail.jpg
+    msg='Oops.'
   fi
+
+  powershell.exe -command New-BurntToastNotification -AppLogo $img -Text \"WSL\", \"$msg\"
 }

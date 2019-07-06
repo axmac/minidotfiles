@@ -8,16 +8,18 @@ export ZSH=/home/alex/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Powerlevel9k settings
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv time dir vcs ssh)
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
-POWERLEVEL9K_VIRTUALENV_BACKGROUND='141'
+# Not applicable under Powerlevel10k. Edit .purepower instead.
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv time dir newline vcs)
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
+#POWERLEVEL9K_VIRTUALENV_BACKGROUND='141'
 # /end powerlevel9k
 
 # Set list of themes to load
@@ -70,18 +72,22 @@ POWERLEVEL9K_VIRTUALENV_BACKGROUND='141'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  bundler
-  dotenv
-  rake
-  rbenv
-  ruby
   fzf-zsh
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Overrides te function in $ZSH_CUSTOM/themes/powerlevel10k/internal/p10k.zsh.
+prompt_virtualenv() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    "$1_prompt_segment" "$0" "$2" "" "green" 'PYTHON_ICON' 0 '' "(${${VIRTUAL_ENV:t}//\%/%%})"
+  fi
+}
+
+# disables prompt mangling in virtual_env/bin/activate
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -116,3 +122,4 @@ source $ZSH/oh-my-zsh.sh
 # Source zsh_profile after ZSH setup is finished, so that any overridden
 # things e.g. aliases are applied last.
 source ~/.zsh_profile
+source ~/.purepower

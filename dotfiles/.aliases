@@ -29,6 +29,7 @@ alias gA='git add --all :/'
 alias gm='git commit'
 alias gr='git rebase'
 alias fixup='git add --all :/;git commit -m "WIP fixup"'
+alias gt='git difftool --tool=vimdiff --no-prompt'
 
 # bundler
 alias be='bundle exec'

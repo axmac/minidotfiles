@@ -96,6 +96,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Vertical line at x chars
+set colorcolumn=120
+
 "Livedown command reference:
 " launch the Livedown server and preview your markdown file
 "   :LivedownPreview
@@ -119,3 +122,15 @@ noremap <F12> :call CleanForMouseSelect()<CR>
 
 nnoremap o o<Esc>
 nnoremap O O<Esc>
+
+" Show buffer list with F5, then type the buffer number to switch to.
+" From https://vim.fandom.com/wiki/Easier_buffer_switching
+nnoremap <F5> :buffers<CR>:buffer<Space>
+
+" Fix ctrl+cursor word movement
+execute "set <xUp>=\e[1;*A"
+execute "set <xDown>=\e[1;*B"
+execute "set <xRight>=\e[1;*C"
+execute "set <xLeft>=\e[1;*D"
+
+command! -nargs=* Wrap set wrap linebreak nolist

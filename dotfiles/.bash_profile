@@ -64,3 +64,4 @@ fi
 if [ -d "$HOME/.rbenv/bin" ]; then
     eval "$(rbenv init -)"
 fi
+export PATH="$HOME/.rbenv/bin:$PATH"

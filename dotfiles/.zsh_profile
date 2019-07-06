@@ -12,15 +12,13 @@ fi
 
 # Load the shell dotfiles:
 # * ~/.path can be used to extend `$PATH`.
-for file in ~/.{bash_completion,path,exports,functions,aliases}; do
+# Load AWS credentials from .aws/env for use with https://github.com/mesosphere/aws-cli
+for file in ~/.{bash_completion,path,exports,functions,aliases,aws/env}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
 
 ulimit -n 1024
-
-# Allow ctrl+s to search forward through history
-stty -ixon
 
 # SSH agent
 SSH_ENV="$HOME/.ssh/environment"
@@ -73,4 +71,3 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
-
