@@ -56,11 +56,6 @@ if [ -e /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
-# Load mcfly search history replacement
-if [[ -r "$(brew --prefix)/opt/mcfly/mcfly.bash" ]]; then
-  source "$(brew --prefix)/opt/mcfly/mcfly.bash"
-fi
-
 # Remove duplicate ZSH history
 # http://leetschau.github.io/remove-duplicate-zsh-history.html
 setopt EXTENDED_HISTORY
