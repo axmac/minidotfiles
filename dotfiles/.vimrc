@@ -134,3 +134,6 @@ execute "set <xRight>=\e[1;*C"
 execute "set <xLeft>=\e[1;*D"
 
 command! -nargs=* Wrap set wrap linebreak nolist
+
+" Syntax highlighting for files in .ssh
+autocmd BufRead,BufNewFile ~/.ssh/*.config set syntax=sshconfig
