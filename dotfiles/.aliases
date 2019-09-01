@@ -81,3 +81,6 @@ alias dp='docker ps -a'
 
 # ps
 alias psa='ps -a'
+
+# diff
+alias diff='diff --color'

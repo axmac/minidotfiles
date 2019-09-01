@@ -79,7 +79,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# Overrides te function in $ZSH_CUSTOM/themes/powerlevel10k/internal/p10k.zsh.
+# Overrides the function in $ZSH_CUSTOM/themes/powerlevel10k/internal/p10k.zsh.
 prompt_virtualenv() {
   if [[ -n "$VIRTUAL_ENV" ]]; then
     "$1_prompt_segment" "$0" "$2" "" "green" 'PYTHON_ICON' 0 '' "(${${VIRTUAL_ENV:t}//\%/%%})"

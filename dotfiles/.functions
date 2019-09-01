@@ -42,3 +42,19 @@ function pingme() {
 
   powershell.exe -command New-BurntToastNotification -AppLogo $img -Text \"WSL\", \"$msg\"
 }
+
+function docker-rtail {
+  host=$1
+  log_file=$2
+
+  a=0;
+  until docker exec -i $host tail -f $log_file 2> /dev/null; do
+    if [ $a -eq "0" ]; then
+      echo -n 'Waiting for log';
+      a=1;
+    else
+      echo -n '.';
+    fi;
+    sleep 1;
+  done
+}
