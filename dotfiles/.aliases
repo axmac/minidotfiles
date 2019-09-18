@@ -36,16 +36,9 @@ alias be='bundle exec'
 alias ber='bundle exec rake'
 
 # ls
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
-else # OS X `ls`
-    colorflag="-G"
-fi
-
-alias l="ls -lhF ${colorflag}"
-alias ls="ls -h ${colorflag}"
-alias ll="ls -lAhF ${colorflag}"
+alias l='ls -lhF --color'
+alias ls='ls -h --color'
+alias ll='ls -lAhF --color'
 
 # tmux
 alias t='tmux'
