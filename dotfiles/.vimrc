@@ -137,3 +137,6 @@ command! -nargs=* Wrap set wrap linebreak nolist
 
 " Syntax highlighting for files in .ssh
 autocmd BufRead,BufNewFile ~/.ssh/*.config set syntax=sshconfig
+
+" No whitespace stripping on vim diff files
+autocmd Filetype diff let b:disable_StripWhiteSpaces=1
