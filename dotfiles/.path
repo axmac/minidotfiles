@@ -10,11 +10,7 @@
 # ansible
 [[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
 
-# vagrant on windows
-[[ -d "/mnt/c/HashiCorp/Vagrant/bin" ]] && PATH="/mnt/c/HashiCorp/Vagrant/bin:$PATH"
-
-# virtualbox on windows
-
-[[ -d "/mnt/c/Program Files/Oracle/VirtualBox" ]] && PATH="/mnt/c/Program Files/Oracle/VirtualBox:$PATH"
+# vscode on windows
+[[ -d /c/Users/alex/AppData/Local/Programs/Microsoft\ VS\ Code/bin ]] && PATH=/c/Users/alex/AppData/Local/Programs/Microsoft\ VS\ Code/bin:$PATH
 
 export PATH
