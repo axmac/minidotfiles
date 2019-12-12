@@ -17,7 +17,7 @@ fi
 # Load the shell dotfiles:
 # * ~/.path can be used to extend `$PATH`.
 # Load AWS credentials from .aws/env for use with https://github.com/mesosphere/aws-cli
-for file in ~/.{bash_completion,path,exports,functions,aliases,aws/env}; do
+for file in ~/.{bash_completion,path,exports,functions,aliases,aws/env,corporate}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -70,3 +70,5 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
+
+cd ~
