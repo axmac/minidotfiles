@@ -10,7 +10,7 @@
 # ansible
 [[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
 
-# vscode on windows
-[[ -d /c/Users/alex/AppData/Local/Programs/Microsoft\ VS\ Code/bin ]] && PATH=/c/Users/alex/AppData/Local/Programs/Microsoft\ VS\ Code/bin:$PATH
+# homebrew
+[[ -d "/home/linuxbrew/.linuxbrew/bin" ]] && PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 export PATH
